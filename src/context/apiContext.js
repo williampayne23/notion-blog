@@ -13,7 +13,7 @@ function useApi(){
     })
 
     const NOTION_BLOG_ID=config.NOTION_BLOG_ID
-    const NOTION_SEQUENCES_ID=config.NOTION_BLOG_ID
+    const NOTION_SEQUENCES_ID=config.NOTION_SEQUENCES_ID
     const TABLE_URL="https://notion-api.splitbee.io/v1/table/"
     const BLOCKS_URL="https://notion-api.splitbee.io/v1/page/"
 
