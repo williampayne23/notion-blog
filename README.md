@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a Notion based blog app which pulls pages from a Notion database and presents them as blog pages, it also allows blog pages to be linked in sequences. You can find it hosted [here](https://main.dhne00f3iwexg.amplifyapp.com).
+
 ## Available Scripts
 
 In the project directory, you can run:
