@@ -22,7 +22,7 @@ function App() {
     <Router>
       <ApiContextProvider>
         <Menu/>
-        <div style={{"padding-top":"8.5%", "max-width":"900px", "margin":"auto"}}>
+        <div style={{"padding-top":"100px", "max-width":"900px", "margin":"auto"}}>
                 <Container>     
                   <Switch>
                     <Route path="/sequences">
