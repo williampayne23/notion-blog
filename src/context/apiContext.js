@@ -116,12 +116,12 @@ export function ApiContextProvider({children}){
             const posts = getAllPosts()
             if(!posts)
                 return null;
-            const post = posts.find((t) => t.slug === slug);
+            const post = posts.find((p) => p.slug === slug);
             if(!post)
                 return null;
 
             let sequenceDetail = {}
-            const sequence = getAllSequences().find(s => s.id === post.Sequence[0])
+            const sequence = getAllSequences().find(s => s.id === post.Sequence? post.Sequence[0] : undefined)
             if(sequence){
                 const sequencePosts = this.getSortedPosts().filter(p => sequence.Posts.includes(p.id))
                 let index = 0
@@ -141,7 +141,6 @@ export function ApiContextProvider({children}){
             return post;
         },
         getSequenceBySlug(slug){
-            console.log(slug)
 
             const sequences = getAllSequences()
             console.log(sequences)
@@ -149,7 +148,7 @@ export function ApiContextProvider({children}){
                 return null;
 
             const sequence = sequences.find((t) => t.slug === "sequence/" + slug);
-            console.log(sequence)
+
             if(!sequence)
                 return null;
 

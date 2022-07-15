@@ -3,9 +3,9 @@ import { Row } from 'react-bootstrap';
 
 export default function SideBar({toggleNav}){
     const history = useHistory();
-    return <div id="mySidenav" className="sidenav" style={{"letter-spacing":"4px"}}>
+    return <div id="mySidenav" className="sidenav" style={{"letterSpacing":"4px"}}>
                 <Row style={{"margin":"0px"}}>
-                <div className="button bar-item" onClick={toggleNav} style={{"width":"40px"}}><span style={{"font-size":"30px"}}>&times;</span></div>
+                <div className="button bar-item" onClick={toggleNav} style={{"width":"40px"}}><span style={{"fontSize":"30px"}}>&times;</span></div>
                 </Row>
                 <Row style={{"margin":"0px"}}>
                 <span className="button bar-item" onClick={() => {history.push('/sequences'); toggleNav()}}>Sequences</span>

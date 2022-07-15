@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function TopBar({toggleNav}){
     return       <div id="outer" className="fixed-top" style={{"height":"70px"}}>
-    <div id="main" className="" style={{"letter-spacing":"4px", "padding":"4px", "height" : "60px"}}>
+    <div id="main" className="" style={{"letterSpacing":"4px", "padding":"4px", "height" : "60px"}}>
         <a href="/" className="float-left" style={{"padding":"4px"}}>
           <img alt="" src="/Banner.png" height="45"/>
         </a>

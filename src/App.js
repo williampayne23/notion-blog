@@ -13,7 +13,7 @@ import {
   Route,
   useParams
 } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useState, useMemo } from 'react';
 import {ApiContextProvider, ApiContext} from './context/apiContext'
 import { Container } from 'react-bootstrap';
 
@@ -22,7 +22,7 @@ function App() {
     <Router>
       <ApiContextProvider>
         <Menu/>
-        <div style={{"padding-top":"100px", "max-width":"900px", "margin":"auto"}}>
+        <div style={{"paddingTop":"100px", "maxWidth":"900px", "margin":"auto"}}>
                 <Container>     
                   <Switch>
                     <Route path="/sequences">
@@ -48,10 +48,43 @@ function App() {
 function PostList(){
   const apiContext = useContext(ApiContext)
   const posts = apiContext.getSortedPosts()
+  const [filterMonth, setFilterMonth] = useState("")
+
+
+  const filteredPosts = useMemo(() => {
+    if(filterMonth === "")
+      return posts
+    return posts.filter(p => {
+      console.log(p["Months"])
+      
+      return p["Months"] && p["Months"].includes(filterMonth)
+    })
+  }, [posts, filterMonth])
+
   if (!posts){
     <FourOhFour/>
   }
-  return <PageList pages={posts}/>
+  return <>
+    <h6>Filter by month visible:
+      <select name="month" onChange={(e) => setFilterMonth(e.target.value)} style={{"backgroundColor":"var(--bg1)"}}>
+        <option defaultValue value="">All constellations</option>
+          <option value="January">January</option>
+          <option value="Febuary">Febuary</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+      </select>
+    </h6>
+    <br/>
+    <PageList pages={filteredPosts}/>
+  </>
 }
 
 function SequenceList(){
@@ -76,7 +109,6 @@ function Sequence(){
     const {slug} = useParams()
     const apiContext = useContext(ApiContext)
     const sequence = apiContext.getSequenceBySlug(encodeURI(slug));
-    console.log(sequence)
     if(!sequence)
       return <FourOhFour/>
     return <SequenceDetail sequence={sequence}/>
