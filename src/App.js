@@ -61,8 +61,8 @@ function PostList(){
     })
   }, [posts, filterMonth])
 
-  if (!posts){
-    <FourOhFour/>
+  if (!posts || posts.length === 0){
+    return <FourOhFour/>
   }
   return <>
     <h6>Filter by month visible:
@@ -90,8 +90,8 @@ function PostList(){
 function SequenceList(){
   const apiContext = useContext(ApiContext)
   const sequences = apiContext.getSortedSequences()
-  if(!sequences){
-    <FourOhFour/>
+  if(!sequences || sequences.length === 0){
+    return <FourOhFour/>
   }
   return <PageList pages={sequences}/>
 }
